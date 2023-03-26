@@ -12,6 +12,7 @@ typedef struct ts_entry_t {
 // the capacity of the array, and the size (number of entries stored)
 typedef struct ts_hashmap_t {
    ts_entry_t **table;
+   pthread_mutex_t **locks;
    int capacity;
    int size;
 } ts_hashmap_t;
@@ -23,3 +24,4 @@ int put(ts_hashmap_t *map, int key, int value);
 int del(ts_hashmap_t *map, int key);
 double lf(ts_hashmap_t *map);
 void printmap(ts_hashmap_t *map);
+int getKeyIndex(int key, int size);
